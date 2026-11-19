@@ -1,14 +1,12 @@
 ---
 name: Jiale Zhang
 name_zh: 张嘉乐
-role: Ph.D. Student in Computer Science
+role: Ph.D. Candidate
+graduation: Expected graduation: 2027
 university: Shanghai Jiao Tong University
 location: Shanghai, China
 email: zhangjiale100@sjtu.edu.cn
-github: https://github.com/TT885
 scholar: https://scholar.google.com/citations?user=Xj2PkcsAAAAJ&hl=en&oi=sra
-orcid: https://orcid.org/0009-0003-7603-1663
-dblp: https://dblp.org/pid/218/2216-16.html
 portrait: assets/profile/academic.png
 site_url: https://tt885.github.io
 description: Jiale Zhang — Mobile computing and online decision-making for map services.
@@ -17,7 +15,7 @@ updated: November 2026
 
 ## About me
 
-I am a Ph.D. student in Computer Science at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/), advised by [Prof. Xiaofeng Gao (高晓沨)](https://cs.sjtu.edu.cn/~gao-xf/).
+I am a Ph.D. candidate at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/), advised by [Prof. Xiaofeng Gao](https://cs.sjtu.edu.cn/~gao-xf/).
 
 My research focuses on **mobile computing and online decision-making for map services**, including task allocation and route planning.
 
@@ -51,7 +49,7 @@ IEEE Transactions on Services Computing, 17(3): 905–920, 2024.
 
 **Jiale Zhang**, Tianxiang Jiang, Xiaofeng Gao, Guihai Chen.
 
-IEEE Transactions on Mobile Computing, 23(1): 150–163, 2024. Early access: 2022.
+IEEE Transactions on Mobile Computing, 23(1): 150–163, 2024.
 
 ### [Timely Watchers: Cost-Effective Schedule for Urban Sensor Patrols](https://doi.org/10.1007/978-981-96-8728-2_34)
 
@@ -77,7 +75,7 @@ Combinatorial Optimization and Applications (COCOA), pp. 380–391, 2023.
 
 **Shanghai Jiao Tong University**
 
-- 2022 – present: Ph.D. student, Computer Science.
+- 2022 – 2027 (expected): Ph.D., Computer Science.
 - 2018 – 2022: Computer Science, IEEE Honors Class; Zhiyuan Honors Program.
 
 ## Honors
@@ -85,9 +83,13 @@ Combinatorial Optimization and Applications (COCOA), pp. 380–391, 2023.
 - National Scholarship of China.
 - Outstanding Graduate of Shanghai · 上海市优秀毕业生.
 - Outstanding Zhiyuan Student · 致远杰出学生.
-- Excellent PRP Scholar · 优秀䇹政学者.
+- Outstanding Chun-Tsung Scholar · 优秀䇹政学者.
+- Project Lead, National Undergraduate Innovation Program (IPP) · 国家级大创项目主持.
+- [Outstanding Teaching Assistant Award · 卓越助教奖](https://ctld.sjtu.edu.cn/news/detail/914).
 
 ## Experience
 
-- **DiDi · Research internship:** GNSS/GPS data processing and road-side scene analysis.
-- **SJTU · Teaching and mentoring:** mathematical modeling competitions, undergraduate counseling, and [Outstanding Teaching Assistant](https://ctld.sjtu.edu.cn/news/detail/914).
+- **2024–2026 · DiDi Research Intern:** GNSS/GPS data processing and road-side scene analysis.
+- **2022–2026 · Undergraduate Counselor**, Shanghai Jiao Tong University.
+- **2021–2023 · Teaching Assistant**, MCM Training Camp.
+- **2022–2023 · Teaching Assistant**, Algorithm Design and Analysis.

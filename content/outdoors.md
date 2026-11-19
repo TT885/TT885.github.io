@@ -1,42 +1,68 @@
 ---
-title: 向外探索，|向内生长。
+title: Trail Running|Marathon
 portrait: assets/profile/outdoor-rustic.png
-description: 张嘉乐的户外记录：跑步、徒步、越野与骑行。
+description: Jiale Zhang — Trail Running and Marathon.
 ---
 
 ## Introduction
 
-我是张嘉乐。做研究之外，我喜欢跑步、徒步和骑行，从城市街角走到山野长线。
+## Race highlights
 
-## 2025，在路上的一年
+### Marathon · 2:59
 
-来自我的 2025 年度运动与旅行记录。
+大众精英级 · 海淀马拉松
 
-| 项目 | 记录 |
-| --- | --- |
-| 年度跑步 | 2,722 km |
-| 山野徒步 | 1,564 km |
-| 徒步累计爬升 | 79,152 m |
-| 年度骑行 | 2,147 km |
-| 徒步出发 | 85 次 |
-| 户外运动投入 | 830 小时 |
+![海淀马拉松完赛记录（路线截图）](assets/outdoors/races/marathon.jpg)
 
-不同运动与出行平台的记录可能交叉，里程不直接相加。
+### Half Marathon · 1:23
 
-## 比赛记录
+大众精英级 · 绍兴马拉松
 
-- **马拉松：Sub 3 hours。** 2025 年 10 月首次参加全马。
-- **半程马拉松：1 小时 23 分。** 全年三场，取个人最佳。
-- **越野跑：三场。** 累计 60.5 公里，爬升 3,803 米。
+![绍兴半程马拉松成绩证书 · 1:23:32](assets/outdoors/races/half-marathon.jpg)
 
-## 山野与城市
+### Trail Running
 
-五台山、南太行、双黄连东北灵、三峰大环线……2025 年徒步 85 次，旅行走过 53 个国内城市、15 个海外城市，也在北京点亮了 200 个城市角落。
+Best finish: **2nd Place** · **ITRA Index 574**
 
-## 年度记录
+![香山站成绩证书（本场第 3 名）](assets/outdoors/races/xiangshan.jpg)
 
-![2025 年度跑步记录](assets/outdoors/2025-running.jpg)
+## Selected routes
 
-![2025 年三场越野赛](assets/outdoors/2025-trail.jpg)
+### 三峰 · 北京
 
-[查看 2025 徒步路线总表](assets/outdoors/2025-hiking.png)
+21.74 km · 3:37:22
+
+![三峰环线](assets/outdoors/routes/sanfeng.jpg)
+
+### 贵阳城
+
+40.65 km · 城市环线
+
+![贵阳城环线](assets/outdoors/routes/guiyang.jpg)
+
+### 新四军小飞象 · 杭州
+
+32.08 km · 山野环线
+
+![新四军小飞象路线](assets/outdoors/routes/xinsijun.jpg)
+
+### 苏州喷火龙
+
+38.53 km · 山野越野
+
+![苏州喷火龙路线](assets/outdoors/routes/suzhou.jpg)
+
+### 温岭方山
+
+20.19 km · 方山越野赛
+
+![温岭方山越野路线](assets/outdoors/routes/wenling.jpg)
+
+## More routes
+
+- **南太行** · 86.59 km · 累计爬升 3,137 m
+- **五台山三日顺** · 73.71 km · 累计爬升 3,237 m
+- **库布齐西线** · 42.06 km · 沙漠穿越
+- **双黄连东北灵** · 38.5 km · 累计爬升 2,481 m
+- **赤城 50K 探路** · 52 km · 累计爬升 1,704 m
+- **麻田岭东甸子梁** · 24.79 km · 累计爬升 1,498 m

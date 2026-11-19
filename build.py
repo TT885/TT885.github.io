@@ -104,6 +104,16 @@ def publications(text):
     return '\n'.join(out)
 
 
+def gallery(text):
+    cards = []
+    for entry in re.split(r'(?m)^### ', text):
+        if not entry.strip():
+            continue
+        title, body = entry.split('\n', 1)
+        cards.append('<article class="gallery-card"><h3>' + inline(title) + '</h3>' + markdown(body) + '</article>')
+    return '<div class="gallery-grid">' + '\n'.join(cards) + '</div>'
+
+
 def head(title, description, url, portrait, outdoor=False):
     return '<!doctype html>\n<html lang="' + ('zh-CN' if outdoor else 'en') + '">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(description) + '">\n<meta property="og:title" content="' + esc(title) + '">\n<meta property="og:description" content="' + esc(description) + '">\n<meta property="og:type" content="website">\n<meta property="og:url" content="' + esc(url) + '">\n<meta property="og:image" content="' + esc(url.rsplit('/', 1)[0] + '/' + portrait) + '">\n<link rel="canonical" href="' + esc(url) + '">\n<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="assets/site.css">\n</head>\n'
 
@@ -118,14 +128,14 @@ def build():
     mapping = {'About me': 'about', 'Publications': 'publications', 'Research software': 'projects', 'Education': 'education', 'Honors': 'awards', 'Experience': 'experience'}
     if set(sections) != set(mapping) | {'Keywords'}:
         raise ValueError('Keep the academic ## section names; edit their content freely')
-    for key in ('portrait', 'site_url', 'name', 'name_zh', 'email', 'role', 'university', 'location', 'github', 'scholar', 'orcid', 'dblp', 'description', 'updated'):
+    for key in ('portrait', 'site_url', 'name', 'name_zh', 'email', 'role', 'graduation', 'university', 'location', 'scholar', 'description', 'updated'):
         if not meta.get(key):
             raise ValueError('Missing academic metadata: ' + key)
     for path in (meta['portrait'], outside['portrait']):
         if not (ROOT / path).is_file():
             raise ValueError('Portrait does not exist: ' + path)
-    links = [('Email', 'mailto:' + meta['email']), ('Google Scholar', meta['scholar']), ('DBLP', meta['dblp']), ('GitHub', meta['github']), ('ORCID', meta['orcid'])]
-    profile = '<aside class="profile" aria-label="Profile"><div class="portrait academic-portrait"><img src="' + esc(meta['portrait']) + '" alt="Portrait of ' + esc(meta['name']) + '" fetchpriority="high"></div><h1>' + esc(meta['name']) + ' <span lang="zh-CN">' + esc(meta['name_zh']) + '</span></h1><p class="profile-role">' + esc(meta['role']) + '</p><p class="profile-university">' + esc(meta['university']) + '</p><p class="profile-location">' + esc(meta['location']) + '</p><div class="profile-links">' + ''.join('<a href="' + esc(url) + '">' + esc(label) + '</a>' for label, url in links) + '</div></aside>'
+    links = [('Google Scholar', meta['scholar'])]
+    profile = '<aside class="profile" aria-label="Profile"><div class="portrait academic-portrait"><img src="' + esc(meta['portrait']) + '" alt="Portrait of ' + esc(meta['name']) + '" fetchpriority="high"></div><h1>' + esc(meta['name']) + ' <span lang="zh-CN">' + esc(meta['name_zh']) + '</span></h1><p class="profile-role">' + esc(meta['role']) + '</p><p class="profile-graduation">' + esc(meta['graduation']) + '</p><p class="profile-university">' + esc(meta['university']) + '</p><p class="profile-location">' + esc(meta['location']) + '</p><div class="profile-links">' + ''.join('<a href="' + esc(url) + '">' + esc(label) + '</a>' for label, url in links) + '</div></aside>'
     body = []
     for title, anchor in mapping.items():
         text = sections[title]
@@ -138,11 +148,12 @@ def build():
     academic = head(meta['name'] + ' · ' + meta['name_zh'], meta['description'], meta['site_url'] + '/', meta['portrait']) + header() + '<div class="academic-layout">' + profile + '<main id="main">' + '\n'.join(body) + footer + '</main></div></body></html>\n'
     intro = outdoor_sections.pop('Introduction')
     outdoor = head('户外 · Outdoors | ' + meta['name_zh'], outside['description'], meta['site_url'] + '/outdoors.html', outside['portrait'], True) + header(True)
-    outdoor += '<main id="main" class="outdoor-main"><section class="outdoor-hero"><div class="outdoor-intro"><h1>' + esc(outside['title']).replace('|', '<br>') + '</h1>' + markdown(intro) + '<a class="text-button" href="#year-2025">2025 户外记录</a></div><div class="portrait outdoor-portrait"><img src="' + esc(outside['portrait']) + '" alt="张嘉乐的户外形象照" fetchpriority="high"></div></section>'
+    outdoor += '<main id="main" class="outdoor-main"><section class="outdoor-hero"><div class="outdoor-intro"><h1>' + esc(outside['title']).replace('|', '<br>') + '</h1>' + markdown(intro) + '</div><div class="portrait outdoor-portrait"><img src="' + esc(outside['portrait']) + '" alt="张嘉乐的户外形象照" fetchpriority="high"></div></section>'
     for number, (title, text) in enumerate(outdoor_sections.items()):
-        anchor = 'year-2025' if number == 0 else 'outdoor-' + str(number)
-        outdoor += '<section class="outdoor-section" id="' + anchor + '"><div class="section-heading"><h2>' + esc(title) + '</h2></div>' + markdown(text) + '</section>'
-    outdoor += '<footer class="page-footer"><span>2025 年度回顾</span><a href="./">学术主页 · Academic</a></footer></main></body></html>\n'
+        anchor = 'races' if number == 0 else 'outdoor-' + str(number)
+        content = gallery(text) if title in ('Race highlights', 'Selected routes') else markdown(text)
+        outdoor += '<section class="outdoor-section" id="' + anchor + '"><div class="section-heading"><h2>' + esc(title) + '</h2></div>' + content + '</section>'
+    outdoor += '<footer class="page-footer"><a href="./">学术主页 · Academic</a></footer></main></body></html>\n'
     for filename, content in (('index.html', academic), ('outdoors.html', outdoor)):
         target = ROOT / filename
         if not target.exists() or target.read_text(encoding='utf-8') != content:
@@ -175,7 +186,7 @@ def main():
             print('\nPreview stopped.')
     if args.publish:
         # Stage only site sources and generated pages; leave unrelated edits alone.
-        paths = ['content', 'build.py', 'README.md', 'index.html', 'outdoors.html', 'assets/site.css', 'assets/profile', '.nojekyll']
+        paths = ['content', 'build.py', 'README.md', 'index.html', 'outdoors.html', 'assets/site.css', 'assets/profile', 'assets/outdoors', '.nojekyll']
         subprocess.run(['git', 'add', '--'] + paths, cwd=ROOT, check=True)
         changed = subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=ROOT)
         if changed.returncode == 1:
