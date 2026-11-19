@@ -1,0 +1,31 @@
+/* Outdoor journal: full-length route images and a separate visual identity. */
+.outdoor-page{--ink:#173c31;--accent:#20664b;--muted:#5d766b;--line:#d6e1d9;background:#eff4f0}
+.outdoor-page .site-header{background:#173c31;border:0;position:static}
+.outdoor-page .site-header a,.outdoor-page .site-header nav a[aria-current]{color:#f1f7f2}
+.outdoor-page .wordmark{letter-spacing:.6px}
+.outdoor-main{max-width:1280px;padding:0 32px}
+.outdoor-hero{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:45px;padding:35px 0 30px;align-items:center}
+.outdoor-intro h1{font-family:Georgia,serif;font-size:42px;letter-spacing:-1px;line-height:1.15;margin-bottom:20px}
+.outdoor-intro>p{font-size:16px;max-width:760px;line-height:1.8;margin-bottom:0}
+.outdoor-portrait{width:220px;max-width:220px;aspect-ratio:940/1097;border-radius:7px;background:#dce5df}
+.outdoor-portrait img{width:165%;left:-65%;top:0;height:auto;max-width:none}
+.outdoor-section{margin-top:28px;margin-bottom:45px}
+.outdoor-section .section-heading{border:0;margin-bottom:24px;padding:0}
+.outdoor-section .section-heading h2{font-family:Georgia,serif;font-size:34px;font-weight:500;letter-spacing:-.7px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px;align-items:start}
+.gallery-card{background:white;border-radius:8px;overflow:hidden;border:1px solid #dce5df;padding:18px 16px 14px;box-shadow:0 6px 20px #173c3106}
+.gallery-card h3{font-size:18px;margin-bottom:8px;line-height:1.4}
+.gallery-card>p{font-size:13px;line-height:1.65;min-height:44px;color:var(--muted);margin-bottom:14px}
+.gallery-card .report-image{width:100%;margin:0;display:block}
+.gallery-card .report-image>a{display:block;border:0;border-radius:3px;background:transparent;overflow:visible}
+#routes .gallery-card .report-image img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center}
+.gallery-card .report-image figcaption{font-size:12px;margin-top:12px;color:var(--muted);line-height:1.6}
+#more-routes{padding:25px 30px;background:#e3ece5;border-radius:8px}
+#more-routes .section-heading h2{font-size:26px}
+#more-routes .plain-list{columns:2;column-gap:35px;margin-bottom:0}
+#more-routes .plain-list li{break-inside:avoid;font-size:14px;line-height:1.8}
+#personal-best{margin-top:55px;padding-top:30px;border-top:1px solid #c8d9cc}
+#personal-best .gallery-card .report-image img{width:100%;height:390px;object-fit:contain;object-position:center}
+.outdoor-page .page-footer{padding:0 0 30px}
+@media(max-width:900px){.outdoor-main{padding:0 22px}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.outdoor-hero{gap:25px}.outdoor-intro h1{font-size:34px}}
+@media(max-width:680px){.outdoor-main{padding:0 18px}.outdoor-hero{grid-template-columns:1fr 110px;gap:18px;padding:25px 0}.outdoor-intro h1{font-size:27px;line-height:1.18;letter-spacing:-.7px;margin-bottom:12px}.outdoor-intro>p{font-size:14px;line-height:1.7}.outdoor-portrait{width:110px;max-width:110px;aspect-ratio:940/1097}.gallery-grid{grid-template-columns:1fr;gap:25px}.outdoor-section .section-heading h2{font-size:29px}.gallery-card{padding:16px}.gallery-card>p{min-height:0}.outdoor-section{margin-bottom:32px}.outdoor-page #more-routes .plain-list{columns:1}#more-routes{padding:20px}#personal-best .gallery-card .report-image img{height:auto;max-height:none}#personal-best{margin-top:35px}}

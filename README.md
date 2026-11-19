@@ -22,7 +22,9 @@
 
 论文照着已有记录复制一组：`### [标题](DOI)`，下面依次是“会议/期刊与等级或奖项”“作者”“正式引用信息”，三段之间各空一行。没有 CCF 等级就不写，不要为排版补等级。
 
-户外页 `Race highlights` 和 `Selected routes` 下，每个 `###` 是一张卡片：标题、简短说明、图片。点击图片可查看原图。其余路线在 `More routes` 的列表里修改。素材目录 `assets/outdoors/races/`、`assets/outdoors/routes/`。海淀全马当前素材是完赛路线记录，不冒充正式证书；香山证书实际为第 3 名，与个人最好第 2 名分开标注。
+户外页依次为 `My Route`、`More routes`、`Personal Best`。`My Route` 和 `Personal Best` 下，每个 `###` 是一张卡片：标题、简短说明、图片。点击图片可查看原图。素材目录 `assets/outdoors/races/`、`assets/outdoors/routes/`。路线图按完整比例显示，保留距离、爬升、时间；源截图不裁切。六张路线卡为五条 Trail Running 与一条 Cycling。香山第二名使用本轮提供的真实奖杯图；海淀全马当前仍是完赛记录图。
+
+户外页独立视觉样式在 `assets/outdoors.css`；学术页继续用 `assets/site.css`。生成器按 CSS 内容自动添加版本号，更新版式后避免继续读到旧样式。
 
 ## 2. 本地预览
 

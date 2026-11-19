@@ -7,6 +7,7 @@ a small key: value configuration block, not a full YAML parser.
 """
 import argparse
 import html
+import hashlib
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import re
@@ -114,8 +115,18 @@ def gallery(text):
     return '<div class="gallery-grid">' + '\n'.join(cards) + '</div>'
 
 
-def head(title, description, url, portrait, outdoor=False):
+def _head(title, description, url, portrait, outdoor=False):
     return '<!doctype html>\n<html lang="' + ('zh-CN' if outdoor else 'en') + '">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(description) + '">\n<meta property="og:title" content="' + esc(title) + '">\n<meta property="og:description" content="' + esc(description) + '">\n<meta property="og:type" content="website">\n<meta property="og:url" content="' + esc(url) + '">\n<meta property="og:image" content="' + esc(url.rsplit('/', 1)[0] + '/' + portrait) + '">\n<link rel="canonical" href="' + esc(url) + '">\n<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="assets/site.css">\n</head>\n'
+
+
+def head(title, description, url, portrait, outdoor=False):
+    markup = _head(title, description, url, portrait, outdoor)
+    css_version = hashlib.sha256((ROOT / 'assets/site.css').read_bytes()).hexdigest()[:10]
+    markup = markup.replace('href="assets/site.css"', 'href="assets/site.css?v=' + css_version + '"')
+    if outdoor:
+        version = hashlib.sha256((ROOT / 'assets/outdoors.css').read_bytes()).hexdigest()[:10]
+        markup = markup.replace('</head>', '<link rel="stylesheet" href="assets/outdoors.css?v=' + version + '">\n</head>')
+    return markup
 
 
 def header(outdoor=False):
@@ -125,7 +136,7 @@ def header(outdoor=False):
 def build():
     meta, sections = read_page('academic.md')
     outside, outdoor_sections = read_page('outdoors.md')
-    mapping = {'About me': 'about', 'Publications': 'publications', 'Research software': 'projects', 'Education': 'education', 'Honors': 'awards', 'Experience': 'experience'}
+    mapping = {'About me': 'about', 'Publications': 'publications', 'Research software': 'projects', 'Education': 'education', 'Honors': 'awards', 'Experience': 'experience', 'Hobbies': 'hobbies'}
     if set(sections) != set(mapping) | {'Keywords'}:
         raise ValueError('Keep the academic ## section names; edit their content freely')
     for key in ('portrait', 'site_url', 'name', 'name_zh', 'email', 'role', 'graduation', 'university', 'location', 'scholar', 'description', 'updated'):
@@ -150,8 +161,8 @@ def build():
     outdoor = head('户外 · Outdoors | ' + meta['name_zh'], outside['description'], meta['site_url'] + '/outdoors.html', outside['portrait'], True) + header(True)
     outdoor += '<main id="main" class="outdoor-main"><section class="outdoor-hero"><div class="outdoor-intro"><h1>' + esc(outside['title']).replace('|', '<br>') + '</h1>' + markdown(intro) + '</div><div class="portrait outdoor-portrait"><img src="' + esc(outside['portrait']) + '" alt="张嘉乐的户外形象照" fetchpriority="high"></div></section>'
     for number, (title, text) in enumerate(outdoor_sections.items()):
-        anchor = 'races' if number == 0 else 'outdoor-' + str(number)
-        content = gallery(text) if title in ('Race highlights', 'Selected routes') else markdown(text)
+        anchor = {'My Route': 'routes', 'More routes': 'more-routes', 'Personal Best': 'personal-best'}.get(title, 'outdoor-' + str(number))
+        content = gallery(text) if title in ('My Route', 'Personal Best') else markdown(text)
         outdoor += '<section class="outdoor-section" id="' + anchor + '"><div class="section-heading"><h2>' + esc(title) + '</h2></div>' + content + '</section>'
     outdoor += '<footer class="page-footer"><a href="./">学术主页 · Academic</a></footer></main></body></html>\n'
     for filename, content in (('index.html', academic), ('outdoors.html', outdoor)):
@@ -186,7 +197,7 @@ def main():
             print('\nPreview stopped.')
     if args.publish:
         # Stage only site sources and generated pages; leave unrelated edits alone.
-        paths = ['content', 'build.py', 'README.md', 'index.html', 'outdoors.html', 'assets/site.css', 'assets/profile', 'assets/outdoors', '.nojekyll']
+        paths = ['content', 'build.py', 'README.md', 'index.html', 'outdoors.html', 'assets/site.css', 'assets/outdoors.css', 'assets/profile', 'assets/outdoors', '.nojekyll']
         subprocess.run(['git', 'add', '--'] + paths, cwd=ROOT, check=True)
         changed = subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=ROOT)
         if changed.returncode == 1:

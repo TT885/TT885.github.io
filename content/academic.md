@@ -80,12 +80,12 @@ Combinatorial Optimization and Applications (COCOA), pp. 380–391, 2023.
 
 ## Honors
 
-- National Scholarship of China.
+- National Scholarship of China · 国家奖学金.
 - Outstanding Graduate of Shanghai · 上海市优秀毕业生.
 - Outstanding Zhiyuan Student · 致远杰出学生.
 - Outstanding Chun-Tsung Scholar · 优秀䇹政学者.
 - Project Lead, National Undergraduate Innovation Program (IPP) · 国家级大创项目主持.
-- [Outstanding Teaching Assistant Award · 卓越助教奖](https://ctld.sjtu.edu.cn/news/detail/914).
+- Outstanding Teaching Assistant Award · 卓越助教奖.
 
 ## Experience
 
@@ -93,3 +93,7 @@ Combinatorial Optimization and Applications (COCOA), pp. 380–391, 2023.
 - **2022–2026 · Undergraduate Counselor**, Shanghai Jiao Tong University.
 - **2021–2023 · Teaching Assistant**, MCM Training Camp.
 - **2022–2023 · Teaching Assistant**, Algorithm Design and Analysis.
+
+## Hobbies
+
+[Trail Running, Marathon](outdoors.html)
