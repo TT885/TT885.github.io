@@ -1,46 +1,71 @@
-# Jiale Zhang / 张嘉乐 — Personal homepage
+# 个人主页：编辑与发布
 
-Live: https://tt885.github.io/  
-Outdoor page: https://tt885.github.io/outdoors.html
+线上：[学术主页](https://tt885.github.io/) · [户外页面](https://tt885.github.io/outdoors.html)
 
-This repository is the directly published GitHub Pages website. The November 2026 refresh uses plain HTML and CSS. No build or package installation is needed.
+## 平时改哪里？
 
-## Edit
+| 文件 | 内容 |
+| --- | --- |
+| `content/academic.md` | 姓名与联系方式、简介、关键词、论文、教育、荣誉、经历 |
+| `content/outdoors.md` | 户外头像路径、开场文字、年度数字、比赛与图片 |
+| `assets/site.css` | 版式、颜色和照片裁切；日常改文字不用碰 |
 
-- `index.html`: academic biography, publications, education, honors, experience, links.
-- `outdoors.html`: outdoor profile and 2025 annual recap.
-- `assets/site.css`: layout, colors, responsive behavior, portrait crops.
-- `assets/profile/`: supplied portrait compositions. CSS crops out the text panels; original files in `Myblog/个人形象制作/` remain unchanged.
-- `assets/outdoors/`: selected public annual-report images.
+`index.html` 和 `outdoors.html` 是自动生成的结果，**不要直接改**，否则下一次生成会覆盖。旧的 `../blog/` 是历史 Hexo 源码，不再用于发布。
 
-Preview from this directory:
+## 1. 修改 Markdown
+
+用 VS Code、Sublime Text 或其他文本编辑器打开上面两个 `.md` 文件。
+
+文件开头 `---` 之间是设置，一行一个 `字段: 值`，可改邮箱、链接和图片路径。后面就是正文。
+
+支持普通段落、`**加粗**`、`*斜体*`、`[链接文字](网址)`、`![图片说明](图片路径)`、`- 列表`。段落之间空一行。保留现有 `##` 分区标题，以便生成器识别。
+
+论文照着已有记录复制一组：`### [标题](DOI)`，下面依次是“会议/期刊与等级或奖项”“作者”“正式引用信息”，三段之间各空一行。没有 CCF 等级就不写，不要为排版补等级。
+
+## 2. 本地预览
+
+在终端执行（整段复制即可）：
 
 ```sh
-python3 -m http.server 8765
+cd /Users/zhangjiale101/Desktop/D/00-WorkspaceArchive/Comprehensive/Career/Myblog/homepage
+python3 build.py --serve
 ```
 
-Open http://localhost:8765/ and http://localhost:8765/outdoors.html.
+浏览器打开 http://localhost:8765/ ，户外页是 http://localhost:8765/outdoors.html 。
 
-Publish selected edits:
+**保存 Markdown → 刷新浏览器**，预览会重新生成。终端按 `Control + C` 停止预览。
+
+只生成文件、不启动浏览器服务：
 
 ```sh
-git diff
-git add index.html outdoors.html assets/site.css assets/profile assets/outdoors assets/favicon.svg README.md .nojekyll
-git commit -m "Update personal homepage"
-git push origin main
+python3 build.py
 ```
 
-The sibling `blog/` directory is the old Hexo source. Its historical pages and assets are retained here at their original routes, including `/projects/`, `/lectures/`, `/readings/` and `/2022/`. Running the old Hexo deployment would replace the new homepage, so future edits should use this checkout.
+Python 使用标准库，没有 pip、Node 或 Hexo 安装步骤。
 
-## Content provenance — checked 2026-11-19
+## 3. 发布到 GitHub
 
-- Professional biography, email, education and earlier honors: pre-existing personal homepage and local source `blog/source/_posts/01-intro.md`; advisor and research context also supplied by the owner.
-- Publication titles, author order and journal issue/page metadata: publisher-deposited Crossref DOI records for `10.1109/TMC.2022.3229112`, `10.1109/TSC.2024.3376231`, `10.1109/TMC.2025.3558275`, `10.1007/978-981-96-8728-2_34`. The first TMC paper has 2022 early access and a 2024 journal issue; displayed as TMC 2024 with the early-access year noted.
-- WASA Best Paper Award: owner-provided career record and coauthor Xiaochun Yang's official faculty publication list: https://faculty.neu.edu.cn/yangxiaochun/zh_CN/zdylm/266014/list/index.htm .
-- National Scholarship: owner-provided career profile. Award year is omitted because it was not confirmed in the materials inspected.
-- DiDi research description: owner's project updates. Exact internship dates are omitted pending confirmation.
-- ORCID: author's identifier in the TSC/TMC DOI metadata. Scholar and DBLP links are explicitly searches, not guessed profile identifiers.
-- Outdoor statistics: owner-supplied `2025户外年度总结-张嘉乐-小红书发布版.docx` and associated images. Distances are not added across tracking platforms. Body-weight and dietary records were not included in the page.
-- Layout reference: https://gongchenooo.github.io/ . The implementation and copy are original; no theme code or third-party portrait was copied.
+确认本地效果后，在同一目录执行：
 
-Next editorial pass: confirm preferred English translations of undergraduate honors; add a confirmed Scholar/DBLP profile URL and a public CV when ready; add exact internship and award dates only after checking them.
+```sh
+python3 build.py --publish
+```
+
+这条命令依次完成 **生成 HTML → Git 提交 → 推送 main**。GitHub Pages 随后自动部署，可在 [Actions](https://github.com/TT885/TT885.github.io/actions) 查看是否成功。命令执行前即意味着你准备公开这次修改。
+
+也可以继续直接告诉生涯助手改什么，由助手完成同一流程。
+
+## 网址
+
+`site_url` 只用于页面元数据，不会申请或变更域名。GitHub 免费用户站域名绑定 GitHub 用户名。2026-11-19 查询时，`zhangjiale` 账号已存在，不能直接将 TT885 的网站改到这个地址。后续选可用的姓名变体并迁移账号，或购买自己的域名再绑定。当前继续使用 `tt885.github.io`。
+
+## 内容来源
+
+- 个人经历、荣誉和户外记录：用户既有主页、Career 画像、2025 年度户外报告与本轮明确修订。
+- Google Scholar 个人页：用户指定 `Xj2PkcsAAAAJ`。
+- 五篇论文的题目、作者及引用信息：出版社 Crossref 元数据；COCOA DOI 为 `10.1007/978-3-031-49611-0_27`，作者顺序依正式出版记录。COCOA 2023 最佳论文奖依用户本轮确认。
+- CCF-A：[TMC 官方目录](https://www.ccf.org.cn/Academic_Evaluation/CN/)、[TSC 官方目录](https://www.ccf.org.cn/Academic_Evaluation/TCSE_SS_PDL/)。只标注两篇 TMC 与一篇 TSC；WASA、COCOA 不标 A。
+- DBLP 个人页：[Jiale Zhang 0016](https://dblp.org/pid/218/2216-16.html)，核对同一组论文与合作者。
+- 设计参考：[公辰主页](https://gongchenooo.github.io/)。
+
+原站的 `/projects/`、`/lectures/`、`/readings/` 和历史文章路径保留。新页面素材与原始照片分开，源照片不被修改。
