@@ -1,6 +1,6 @@
 # 个人主页：编辑与发布
 
-线上：[学术主页](https://tt885.github.io/) · [户外页面](https://tt885.github.io/outdoors.html)
+线上：[学术主页](https://tt885.github.io/) · [户外页面](https://tt885.github.io/outdoors.html) · [DDL 页面](https://tt885.github.io/ddls/)
 
 ## 平时改哪里？
 
@@ -8,9 +8,10 @@
 | --- | --- |
 | `content/academic.md` | 姓名与联系方式、简介、关键词、论文、教育、荣誉、经历 |
 | `content/outdoors.md` | 户外头像路径、开场文字、年度数字、比赛与图片 |
+| `content/deadlines.json` | 12 个会议的官方截止日期、轮次、时区、来源与核对日期 |
 | `assets/site.css` | 版式、颜色和照片裁切；日常改文字不用碰 |
 
-`index.html` 和 `outdoors.html` 是自动生成的结果，**不要直接改**，否则下一次生成会覆盖。旧的 `../blog/` 是历史 Hexo 源码，不再用于发布。
+`index.html`、`outdoors.html` 和 `ddls/index.html` 是自动生成的结果，**不要直接改**，否则下一次生成会覆盖。旧的 `../blog/` 是历史 Hexo 源码，不再用于发布。
 
 ## 1. 修改 Markdown
 
@@ -36,6 +37,8 @@ python3 build.py --serve
 ```
 
 浏览器打开 http://localhost:8765/ ，户外页是 http://localhost:8765/outdoors.html 。
+
+会议页是 http://localhost:8765/ddls/ 。修改 JSON 后刷新，同样自动重新生成。
 
 **保存 Markdown → 刷新浏览器**，预览会重新生成。终端按 `Control + C` 停止预览。
 
@@ -77,3 +80,16 @@ python3 build.py --publish
 - 设计参考：[公辰主页](https://gongchenooo.github.io/)。
 
 原站的 `/projects/`、`/lectures/`、`/readings/` 和历史文章路径保留。新页面素材与原始照片分开，源照片不被修改。
+
+## DDL 页怎么维护？
+
+只改 `content/deadlines.json`，仍执行 `python3 build.py` / `python3 build.py --publish`。这是公开网站：只记录公开会议数据，不放个人稿件、研究计划或申请进度。页面“自用”不等于访问加密。
+
+- 一个会议一条记录，`cycles` 中分别保留摘要 `abstract` 与全文 `paper`；只跟踪主会研究论文，不混用修订、Industry、Workshop 或 camera-ready 日期。
+- 精确时刻写 `at`，使用带时区的 ISO 格式，如 `2027-01-14T23:59:00-12:00`。`original` 保留官网的原始日期及时区；AoE 是 UTC−12，不是北京时间。Pacific Time 要按日期区分 PST / PDT。
+- 官网只给日期时写 `date`（如 `2027-01-14`）、`zone`（AoE 或 null）和 `original`，不要同时写 `at`，不要猜时分。日期级记录不换算成精确的北京时间。
+- 日期未知写 `null`。已知还有一轮、但日期未公布时设 `pending: true`，并在 `note` 中写明；过去一届全截止、下一届还未核验的保留旧届并说明，不猜算下一届。
+- 修改后更新该会议 `checked`；只有整页重新核对时才更新顶层 `checked`。来源必须保留官方 URL。官方延期时更新相应轮次，并在 `note` 简记变更。
+- 页面随设备时钟自动排序、更新倒计时；**不会自动联网刷新会议数据，也未设置后台定时任务**。建议实际准备投稿时再次打开官方 CFP 确认。
+
+页面布局：`assets/deadlines.css`；交互：`assets/deadlines.js`；生成与数据校验：`deadlines.py`。无新依赖，断网也能打开已生成页面查看已保存的数据和入口。设计参考 [Weihao Cui 的 DDL 页面](https://weihao-cui.com/ddls/)，日期逐项核对官方来源，未沿用第三方预测。

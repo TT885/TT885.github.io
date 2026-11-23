@@ -1,0 +1,110 @@
+{
+  "checked": "2026-11-23",
+  "scope": "Main research / full-paper submissions only; not workshops, revisions or camera-ready deadlines.",
+  "areas": {"data": "Data / IR · 数据与检索", "mobile": "Mobile / Networks · 移动与网络", "ai": "AI / ML · 人工智能"},
+  "conferences": [
+    {
+      "id": "vldb", "name": "VLDB", "edition": 2027, "full_name": "International Conference on Very Large Data Bases",
+      "area": "data", "track": "PVLDB Volume 20 · Research", "checked": "2026-11-23", "pending": false,
+      "note": "月度投稿，摘要为必需。此处记录尚未结束的四轮；Volume 20 的新投稿周期为 2026-04-01 至 2027-03-01，不向后无限延伸。6月1日是修订截止，不是新投稿。",
+      "sources": [{"label": "官方日期", "url": "https://vldb.org/2027/important-dates.html"}, {"label": "投稿规则", "url": "https://www.vldb.org/2027/submission-guidelines.html"}],
+      "cycles": [
+        {"label": "December 2026", "abstract": {"at": "2026-11-25T17:00:00-08:00", "original": "2026-11-25 17:00 PST (UTC−8)"}, "paper": {"at": "2026-12-01T17:00:00-08:00", "original": "2026-12-01 17:00 PST (UTC−8)"}},
+        {"label": "January 2027", "abstract": {"at": "2026-12-25T17:00:00-08:00", "original": "2026-12-25 17:00 PST (UTC−8)"}, "paper": {"at": "2027-01-01T17:00:00-08:00", "original": "2027-01-01 17:00 PST (UTC−8)"}},
+        {"label": "February 2027", "abstract": {"at": "2027-01-25T17:00:00-08:00", "original": "2027-01-25 17:00 PST (UTC−8)"}, "paper": {"at": "2027-02-01T17:00:00-08:00", "original": "2027-02-01 17:00 PST (UTC−8)"}},
+        {"label": "March 2027 · 最后一轮新投稿", "abstract": {"at": "2027-02-25T17:00:00-08:00", "original": "2027-02-25 17:00 PST (UTC−8)"}, "paper": {"at": "2027-03-01T17:00:00-08:00", "original": "2027-03-01 17:00 PST (UTC−8)"}}
+      ]
+    },
+    {
+      "id": "sigir", "name": "SIGIR", "edition": 2027, "full_name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+      "area": "data", "track": "Full papers", "checked": "2026-11-23", "pending": false,
+      "note": "摘要为必需：未提交摘要不能直接交全文。官方文本明确 AoE 日期，未明确时分，因此仅显示日期级倒计时，不换算成虚构的北京时间截止时刻。",
+      "sources": [{"label": "官方 Full Paper CFP", "url": "https://sigir2027.org/pages/submit-full.html"}],
+      "cycles": [{"label": "Main submission", "abstract": {"date": "2027-01-14", "zone": "AoE", "original": "2027-01-14 · AoE (UTC−12)"}, "paper": {"date": "2027-01-21", "zone": "AoE", "original": "2027-01-21 · AoE (UTC−12)"}}]
+    },
+    {
+      "id": "icml", "name": "ICML", "edition": 2027, "full_name": "International Conference on Machine Learning",
+      "area": "ai", "track": "Main conference", "checked": "2026-11-23", "pending": false,
+      "note": "官方已公布摘要与全文日期；投稿系统于2027年1月8日开放。注意摘要早于全文截止。",
+      "sources": [{"label": "官方 CFP", "url": "https://icml.cc/Conferences/2027/CallForPapers"}, {"label": "官方日期", "url": "https://icml.cc/Conferences/2027/Dates"}],
+      "cycles": [{"label": "Main submission", "abstract": {"at": "2027-01-14T23:59:00-12:00", "original": "2027-01-14 23:59 AoE (UTC−12)"}, "paper": {"at": "2027-01-22T23:59:00-12:00", "original": "2027-01-22 23:59 AoE (UTC−12)"}}]
+    },
+    {
+      "id": "kdd", "name": "KDD", "edition": 2027, "full_name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "area": "data", "track": "Research", "checked": "2026-11-23", "pending": true,
+      "note": "Cycle 1 已截止。官方提及 Cycle 2 为2027年2月，但具体日期和时刻尚未公布；不据往年推算。FAQ 的轮次月份名称与 CFP 存在差异，此处日期以 CFP 为准。",
+      "sources": [{"label": "官方 Research CFP", "url": "https://kdd2027.kdd.org/research-track-call-for-papers/"}, {"label": "FAQ", "url": "https://kdd2027.kdd.org/frequently-asked-questions/"}],
+      "cycles": [
+        {"label": "Cycle 2 · 2027年2月，具体日期待公布", "abstract": null, "paper": null},
+        {"label": "Cycle 1 · 已截止", "abstract": {"date": "2026-07-19", "zone": "AoE", "original": "2026-07-19 · end of day AoE"}, "paper": {"date": "2026-07-26", "zone": "AoE", "original": "2026-07-26 · end of day AoE"}}
+      ]
+    },
+    {
+      "id": "mobicom", "name": "MobiCom", "edition": 2027, "full_name": "ACM International Conference on Mobile Computing and Networking",
+      "area": "mobile", "track": "Research papers", "checked": "2026-11-23", "pending": true,
+      "note": "Summer 轮已截止；官方 Winter 轮摘要、全文均标为 TBD。暂不生成冬季轮次倒计时。",
+      "sources": [{"label": "官方 CFP", "url": "https://www.sigmobile.org/mobicom/2027/cfp.html"}],
+      "cycles": [
+        {"label": "Winter · 官方 TBD", "abstract": null, "paper": null},
+        {"label": "Summer · 已截止", "abstract": {"at": "2026-08-26T23:59:00-12:00", "original": "2026-08-26 23:59 AoE (UTC−12)"}, "paper": {"at": "2026-09-02T23:59:00-12:00", "original": "2026-09-02 23:59 AoE (UTC−12)"}}
+      ]
+    },
+    {
+      "id": "neurips", "name": "NeurIPS", "edition": 2027, "full_name": "Conference on Neural Information Processing Systems",
+      "area": "ai", "track": "Main conference", "checked": "2026-11-23", "pending": true,
+      "note": "尚未核到2027主会论文的官方截止日期。下方仅保留2026历史日期，不能作为2027投稿计划依据。",
+      "sources": [{"label": "官方未来会议入口", "url": "https://neurips.cc/Conferences/FutureMeetings"}, {"label": "2026 历史 CFP", "url": "https://neurips.cc/Conferences/2026/CallForPapers"}],
+      "cycles": [{"label": "2026 · 历史记录，非2027日期", "abstract": {"date": "2026-05-04", "zone": "AoE", "original": "2026-05-04 · AoE"}, "paper": {"date": "2026-05-06", "zone": "AoE", "original": "2026-05-06 · AoE"}}]
+    },
+    {
+      "id": "icde", "name": "ICDE", "edition": 2027, "full_name": "IEEE International Conference on Data Engineering",
+      "area": "data", "track": "Research", "checked": "2026-11-23", "pending": false,
+      "note": "两轮研究论文新投稿均已截止。12月1日为 Industry Track，不是 Research；下一届研究投稿待公布。官网未单列摘要截止。",
+      "sources": [{"label": "官方日期", "url": "https://icde2027.github.io/important-dates.html"}],
+      "cycles": [
+        {"label": "Round 1", "abstract": null, "abstract_note": "官网未单列", "paper": {"at": "2026-06-11T17:00:00-07:00", "original": "2026-06-11 17:00 PDT (UTC−7)"}},
+        {"label": "Round 2", "abstract": null, "abstract_note": "官网未单列", "paper": {"at": "2026-11-11T17:00:00-08:00", "original": "2026-11-11 17:00 PST (UTC−8)"}}
+      ]
+    },
+    {
+      "id": "sigmod", "name": "SIGMOD", "edition": 2027, "full_name": "ACM SIGMOD International Conference on Management of Data",
+      "area": "data", "track": "Research / PACMMOD", "checked": "2026-11-23", "pending": false,
+      "note": "四轮新投稿均已截止。2027-02-19 为第四轮修订，不是新投稿窗口；下一届研究投稿待公布。",
+      "sources": [{"label": "官方 Research CFP", "url": "https://2027.sigmod.org/calls_papers_sigmod_research.shtml"}],
+      "cycles": [
+        {"label": "Round 1", "abstract": {"at": "2026-01-10T23:59:00-12:00", "original": "2026-01-10 23:59 AoE"}, "paper": {"at": "2026-01-17T23:59:00-12:00", "original": "2026-01-17 23:59 AoE"}},
+        {"label": "Round 2", "abstract": {"at": "2026-04-10T23:59:00-12:00", "original": "2026-04-10 23:59 AoE"}, "paper": {"at": "2026-04-17T23:59:00-12:00", "original": "2026-04-17 23:59 AoE"}},
+        {"label": "Round 3", "abstract": {"at": "2026-07-10T23:59:00-12:00", "original": "2026-07-10 23:59 AoE"}, "paper": {"at": "2026-07-17T23:59:00-12:00", "original": "2026-07-17 23:59 AoE"}},
+        {"label": "Round 4", "abstract": {"at": "2026-10-10T23:59:00-12:00", "original": "2026-10-10 23:59 AoE"}, "paper": {"at": "2026-10-17T23:59:00-12:00", "original": "2026-10-17 23:59 AoE"}}
+      ]
+    },
+    {
+      "id": "infocom", "name": "INFOCOM", "edition": 2027, "full_name": "IEEE International Conference on Computer Communications",
+      "area": "mobile", "track": "Main technical papers", "checked": "2026-11-23", "pending": false,
+      "note": "IEEE ComSoc 确认全文日期为2026-07-31，已截止；未给出摘要截止与具体时刻/时区。大会官网本次访问受限，不采纳第三方冲突日期。下一届待核验。",
+      "sources": [{"label": "IEEE ComSoc 官方记录", "url": "https://www.comsoc.org/conferences-events/ieee-international-conference-computer-communications-2027"}, {"label": "大会官网（访问可能受限）", "url": "https://infocom2027.ieee-infocom.org/"}],
+      "cycles": [{"label": "Main submission", "abstract": null, "abstract_note": "UNKNOWN · 待核验", "paper": {"date": "2026-07-31", "zone": null, "original": "2026-07-31 · 时间/时区待核验"}}]
+    },
+    {
+      "id": "www", "name": "WWW", "edition": 2027, "full_name": "ACM The Web Conference",
+      "area": "data", "track": "Research long papers", "checked": "2026-11-23", "pending": false,
+      "note": "主会研究长文已截止。此页不混入 short papers、workshop 或 camera-ready 日期；下一届主论文截止待公布。",
+      "sources": [{"label": "官方日期", "url": "https://www2027.thewebconf.org/important-dates/"}],
+      "cycles": [{"label": "Research long papers", "abstract": {"at": "2026-10-18T23:59:00-12:00", "original": "2026-10-18 23:59 AoE (UTC−12)"}, "paper": {"at": "2026-10-25T23:59:00-12:00", "original": "2026-10-25 23:59 AoE (UTC−12)"}}]
+    },
+    {
+      "id": "aaai", "name": "AAAI", "edition": 2027, "full_name": "AAAI Conference on Artificial Intelligence",
+      "area": "ai", "track": "Main technical track", "checked": "2026-11-23", "pending": false,
+      "note": "2027届主会投稿已截止；2028主会 CFP 尚未核到。专项 track 与 workshop 不替代主会投稿日期。",
+      "sources": [{"label": "官方 Main Track CFP", "url": "https://aaai.org/conference/aaai/aaai-27/main-technical-track-call/"}],
+      "cycles": [{"label": "Main submission", "abstract": {"at": "2026-07-21T23:59:00-12:00", "original": "2026-07-21 23:59 AoE (UTC−12)"}, "paper": {"at": "2026-07-28T23:59:00-12:00", "original": "2026-07-28 23:59 AoE (UTC−12)"}}]
+    },
+    {
+      "id": "iclr", "name": "ICLR", "edition": 2027, "full_name": "International Conference on Learning Representations",
+      "area": "ai", "track": "Conference papers", "checked": "2026-11-23", "pending": false,
+      "note": "2027届主会投稿已截止；2028 CFP 尚未核到。已核官方文本仅明确 AoE 日期，不补造时分。",
+      "sources": [{"label": "官方 CFP", "url": "https://iclr.cc/Conferences/2027/CallForPapers"}, {"label": "官方日期", "url": "https://iclr.cc/Conferences/2027/Dates"}],
+      "cycles": [{"label": "Main submission", "abstract": {"date": "2026-09-18", "zone": "AoE", "original": "2026-09-18 · AoE (UTC−12)"}, "paper": {"date": "2026-09-25", "zone": "AoE", "original": "2026-09-25 · AoE (UTC−12)"}}]
+    }
+  ]
+}

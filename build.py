@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the two public pages from content/*.md; Python standard library only.
+"""Build the public pages from Markdown and conference JSON; standard library only.
 
 Supported Markdown: paragraphs, **bold**, *italic*, links, images, - lists,
 ## sections, ### publication titles, and two-column tables. Front matter is
@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 from functools import partial
+from deadlines import build_deadlines
 
 ROOT = Path(__file__).resolve().parent
 
@@ -130,7 +131,7 @@ def head(title, description, url, portrait, outdoor=False):
 
 
 def header(outdoor=False):
-    return '<body' + (' class="outdoor-page"' if outdoor else '') + '><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="wordmark" href="./">' + ('Outdoors' if outdoor else 'Academic homepage') + '</a><nav aria-label="Main navigation"><a href="./"' + ('' if outdoor else ' aria-current="page"') + '>Academic</a><a href="outdoors.html"' + (' aria-current="page"' if outdoor else '') + '>Outdoors · 户外</a></nav></div></header>\n'
+    return '<body' + (' class="outdoor-page"' if outdoor else '') + '><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="wordmark" href="./">' + ('Outdoors' if outdoor else 'Academic homepage') + '</a><nav aria-label="Main navigation"><a href="./"' + ('' if outdoor else ' aria-current="page"') + '>Academic</a><a href="outdoors.html"' + (' aria-current="page"' if outdoor else '') + '>Outdoors · 户外</a><a href="ddls/">DDL</a></nav></div></header>\n'
 
 
 def build():
@@ -170,6 +171,7 @@ def build():
         if not target.exists() or target.read_text(encoding='utf-8') != content:
             target.write_text(content, encoding='utf-8')
         print('Built ' + filename)
+    build_deadlines(ROOT, meta['site_url'])
 
 
 def main():
@@ -183,7 +185,7 @@ def main():
     if args.serve:
         class PreviewHandler(SimpleHTTPRequestHandler):
             def do_GET(self):
-                if self.path.split('?', 1)[0] in ('/', '/index.html', '/outdoors.html'):
+                if self.path.split('?', 1)[0] in ('/', '/index.html', '/outdoors.html', '/ddls/', '/ddls/index.html'):
                     try:
                         build()
                     except (ValueError, OSError) as error:
@@ -197,7 +199,7 @@ def main():
             print('\nPreview stopped.')
     if args.publish:
         # Stage only site sources and generated pages; leave unrelated edits alone.
-        paths = ['content', 'build.py', 'README.md', 'index.html', 'outdoors.html', 'assets/site.css', 'assets/outdoors.css', 'assets/profile', 'assets/outdoors', '.nojekyll']
+        paths = ['content', 'build.py', 'deadlines.py', 'README.md', 'index.html', 'outdoors.html', 'ddls/index.html', 'assets/site.css', 'assets/outdoors.css', 'assets/deadlines.css', 'assets/deadlines.js', 'assets/profile', 'assets/outdoors', '.nojekyll']
         subprocess.run(['git', 'add', '--'] + paths, cwd=ROOT, check=True)
         changed = subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=ROOT)
         if changed.returncode == 1:
